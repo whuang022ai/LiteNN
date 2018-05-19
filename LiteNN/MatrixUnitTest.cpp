@@ -150,7 +150,7 @@ void MatrixUnitTest::testMatrixC5(){
     // Windows devc++ user path :MatrixUnitTest.txt
     // MacOS  Xcode user path: use full path like
     // /Users/minghanyang/Desktop/LiteNN/LiteNN/MatrixUnitTest.txt
-	Matrix *testA =new Matrix("/Users/minghanyang/Desktop/LiteNN/LiteNN/MatrixUnitTest.txt");
+	Matrix *testA =new Matrix("./MatrixUnitTest.txt");
 	assert(almost_equal(testA->get(0,0),4.0));
 	assert(almost_equal(testA->get(0,1),0.8));
 	assert(almost_equal(testA->get(1,0),4.1));
