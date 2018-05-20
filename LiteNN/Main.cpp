@@ -109,7 +109,7 @@ void unitTest(){
 
 
 int main(int argc, char *argv[]){
-    unitTest();
-	//Perceptron_OR_SGD();
-	NeuralNetThreeLayer_XOR_SGD();
+    //unitTest();
+	//Perceptron_XOR_SGD();
+    NeuralNetThreeLayer_XOR_SGD();
 }
