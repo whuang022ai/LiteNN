@@ -38,6 +38,7 @@ class NeuralNetThreeLayer{
 	void trainStepSGD(Matrix &X, Matrix &D);
 	void train(Matrix &X, Matrix &D);
     void userTest();
+    ~NeuralNetThreeLayer();
 	private:
 	MatrixFuction *activation;
 	MatrixFuction *activationDiv;

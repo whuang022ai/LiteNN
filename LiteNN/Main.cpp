@@ -13,6 +13,8 @@ class sigmoid : public MatrixFuction{
 	 double f(double num){
 		return  1 / (1 + exp(-num));
 	}
+    virtual ~sigmoid(){
+    }
 };
 
 class sigmoidDiv : public MatrixFuction{
@@ -20,6 +22,8 @@ class sigmoidDiv : public MatrixFuction{
 	 double f(double num){
 		return  num*(1-num);
 	}
+    virtual ~sigmoidDiv(){
+    }
 };
 
 void Perceptron_AND_SGD(){
@@ -98,6 +102,11 @@ void NeuralNetThreeLayer_XOR_SGD(){
 	}
 	// user testing
     neural->userTest();
+    delete neural;
+    neural =nullptr;
+    trainList.clear();
+    trainList.shrink_to_fit();
+    cin.get();
 }
 
 void unitTest(){

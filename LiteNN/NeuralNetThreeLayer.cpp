@@ -39,6 +39,12 @@ NeuralNetThreeLayer::NeuralNetThreeLayer(MatrixFuction *activation,MatrixFuction
 	WIH=new Matrix(hiddenDim,inputDim +1,MatrixType::StandardNormal01M);
 	WHO=new Matrix(outputDim,hiddenDim+1,MatrixType::StandardNormal01M);
 }
+NeuralNetThreeLayer::~NeuralNetThreeLayer(){
+    delete WIH;
+    delete WHO;
+    delete activation;
+    delete activationDiv;
+}
 void NeuralNetThreeLayer::userTest(){
     while(true){
         cout << "Test Neural Net \n";
@@ -107,7 +113,8 @@ void NeuralNetThreeLayer::trainStepSGD(Matrix &X,Matrix &D){
 	
 	*WHO-=learningRate*dWHO;//update weight with the opposite of the gradient vector
 	*WIH-=learningRate*dWIH;//update weight with the opposite of the gradient vector
+    
 	E.print();
-	
+    
 }
 

@@ -56,6 +56,7 @@ enum class MatrixType{
 class MatrixFuction{
 	public:
 	virtual double f(double)=0 ;//define the mapping f(x) , must be implement.
+    virtual ~MatrixFuction(){};
 };
 
 class Matrix {

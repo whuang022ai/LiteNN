@@ -38,6 +38,8 @@ class myMatrixFuction: public MatrixFuction{
 	 double f(double num){
 		return num*10;
 	}
+    virtual ~myMatrixFuction(){
+    }
 };
 
 class MatrixUnitTest {

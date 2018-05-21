@@ -38,21 +38,36 @@
 using namespace std; 
 /// row=up-down dir size , cols=left-right dir size
 
+class defaultMatrixFuction: public MatrixFuction{
+public:
+    double f(double num){
+        return num;
+    }
+    virtual ~defaultMatrixFuction(){
+    }
+};
+
+
 Matrix::Matrix(int rowsN, int colsN){
 	rows=new int(rowsN);
 	cols=new int(colsN);
 	mat.resize(rowsN);
 	for ( int i = 0 ; i < rowsN ; i++ )
 	   mat[i].resize(colsN);
+    MatrixFuction *f=new defaultMatrixFuction();
+    this->setMatrixFuction(f);
 }
 
 Matrix::Matrix(int rowsN, int colsN,double value){
-	rows=new int(rowsN);
-	cols=new int(colsN);
+    rows=new int(rowsN);
+    cols=new int(colsN);
 	for(int i = 0; i < *rows; i++){
 		vector<double> vec(*cols,value);
 		mat.push_back(vec);
     }
+    MatrixFuction *f=new defaultMatrixFuction();
+    this->setMatrixFuction(f);
+   
 }
 
 Matrix::Matrix(const Matrix& m){
@@ -67,7 +82,8 @@ Matrix::Matrix(const Matrix& m){
 			mat[i][j]=m.get(i,j);
 		}
 	}
-
+    MatrixFuction *f=new defaultMatrixFuction();
+    this->setMatrixFuction(f);
 }
 
 Matrix::Matrix(const string &dataPath){
@@ -80,6 +96,8 @@ Matrix::Matrix(const string &dataPath){
 	}
 	rows=new int((int)mat.size());
 	cols=new int((int)mat[0].size());
+    MatrixFuction *f=new defaultMatrixFuction();
+    this->setMatrixFuction(f);
 }
 
 Matrix::Matrix(int rowsN, int colsN, const MatrixType &p){
@@ -91,6 +109,8 @@ Matrix::Matrix(int rowsN, int colsN, const MatrixType &p){
 				vector<double> vec(colsN,1.0);
 				mat.push_back(vec);
 			}
+            MatrixFuction *f=new defaultMatrixFuction();
+            this->setMatrixFuction(f);
 		}
 		break;
 	case MatrixType::ZeroM:{
@@ -100,6 +120,8 @@ Matrix::Matrix(int rowsN, int colsN, const MatrixType &p){
 				vector<double> vec(colsN,0.0);
 				mat.push_back(vec);
 			}
+            MatrixFuction *f=new defaultMatrixFuction();
+            this->setMatrixFuction(f);
 		}
 		break;
 	case MatrixType::IdentityM:{
@@ -111,13 +133,19 @@ Matrix::Matrix(int rowsN, int colsN, const MatrixType &p){
 					vec[i]=1;
 					mat.push_back(vec);
 				}
+                MatrixFuction *f=new defaultMatrixFuction();
+                this->setMatrixFuction(f);
 			}else{
 				for(int i = 0; i < rowsN; i++){
 					vector<double> vec(colsN,0.0);
 					mat.push_back(vec);
 				}
+                MatrixFuction *f=new defaultMatrixFuction();
+                this->setMatrixFuction(f);
 				throw std::invalid_argument("Identity Matrix must be Square Matrix.");
 			}
+        MatrixFuction *f=new defaultMatrixFuction();
+        this->setMatrixFuction(f);
 		}
 		break;
 	case MatrixType::StandardNormal01M:{
@@ -130,9 +158,13 @@ Matrix::Matrix(int rowsN, int colsN, const MatrixType &p){
 				vector<double> vec(colsN,randfun());
 				mat.push_back(vec);
 			}
+            MatrixFuction *f=new defaultMatrixFuction();
+            this->setMatrixFuction(f);
 		}
 		break;
 	default:{
+        MatrixFuction *f=new defaultMatrixFuction();
+        this->setMatrixFuction(f);
 		throw invalid_argument( "Unimplemented Matrix type" );
 		break;
 		}
@@ -140,13 +172,15 @@ Matrix::Matrix(int rowsN, int colsN, const MatrixType &p){
 }
 
 Matrix::~Matrix(){
-	delete rows;
-	delete cols;
+	//delete rows;
+	//delete cols;
 	mat.clear();
 	vector<vector<double> > tmp ;
 	mat.swap(tmp);
+    
 	rows=nullptr;
 	cols=nullptr;
+   // delete MF;
 	MF=nullptr;
 }
 

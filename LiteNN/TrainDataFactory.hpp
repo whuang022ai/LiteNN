@@ -35,6 +35,7 @@ class trainSample{
 	}
         Matrix *X;
 		Matrix *Y;
+    
 };
 
 class TrainDataFactory{
