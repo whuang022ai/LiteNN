@@ -19,7 +19,7 @@
 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 * See the License for the specific language governing permissions and
 * limitations under the License.
-* 
+*
  **************************************************************************/
 
 
@@ -34,8 +34,9 @@
 #include <cmath>
 #include <cstdlib>
 #include <cassert>
+#include <memory>
 
-using namespace std; 
+using namespace std;
 
 double const epsilon=std::numeric_limits<double>::epsilon();
 template< typename A, typename B >inline
@@ -60,9 +61,9 @@ class MatrixFuction{
 };
 
 class Matrix {
-	
+
 	public :
-	Matrix(int, int); //init by size 
+	Matrix(int, int); //init by size
 	Matrix(int, int,double); //init by size&value
 	Matrix(const Matrix& m); //intit by object
 	Matrix(int,int, const MatrixType &p); //intit by special type matrix
@@ -72,13 +73,13 @@ class Matrix {
 	void fill(double ); //full by element
 	Matrix & operator*=( double const & p) ; //scalar product
 	Matrix & operator*=( Matrix const & p) ; //scalar product
-	
-	Matrix & operator+=( Matrix const & p) ; //add 
-	Matrix & operator+=( double const & p) ; //add 
-	
-	Matrix & operator-=( Matrix const & p) ; //sub 
-	Matrix & operator-=( double const & p) ; //sub 
-	
+
+	Matrix & operator+=( Matrix const & p) ; //add
+	Matrix & operator+=( double const & p) ; //add
+
+	Matrix & operator-=( Matrix const & p) ; //sub
+	Matrix & operator-=( double const & p) ; //sub
+
 	void setMatrixFuction(std::shared_ptr<MatrixFuction>  p);
 	Matrix T (); //trans matrix
 	Matrix F (); //f(x) matrix
@@ -95,7 +96,7 @@ class Matrix {
 	int *rows; //rows = up-down direction size
 	int *cols; //cols = left-right direction size
 	vector<vector<double> > mat; //matrix body
-	
+
 };
 
 Matrix operator+(const Matrix& a, const Matrix& b); //add
@@ -104,7 +105,7 @@ Matrix operator+(const Matrix& a,double num);
 
 Matrix operator*(const Matrix& a, const Matrix& b); //dot product
 Matrix operator*(double num,  const Matrix& a);
-Matrix operator*(const Matrix& a, double num); 
+Matrix operator*(const Matrix& a, double num);
 
 Matrix operator-(const Matrix& a, const Matrix& b); //sub
 Matrix operator-(double num, const Matrix& a);
@@ -112,6 +113,6 @@ Matrix operator-(const Matrix& a,double num);
 
 Matrix operator >> (const Matrix& a, const Matrix& b); //hadamard product
 Matrix operator << (const Matrix& a, const Matrix& b); //table product
-bool operator == (const Matrix& a, const Matrix& b); //almost equal of matrix 
+bool operator == (const Matrix& a, const Matrix& b); //almost equal of matrix
 
 #endif // HELLO_H_
