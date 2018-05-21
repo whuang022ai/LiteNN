@@ -34,12 +34,12 @@ using namespace std;
 class Perceptron{
 	
 	public :	
-	Perceptron(MatrixFuction *activation,MatrixFuction *activationDiv,int inputDim,double learningRate);
+	Perceptron(std::shared_ptr<MatrixFuction> activation,std::shared_ptr<MatrixFuction> activationDiv,int inputDim,double learningRate);
 	void trainStepSGD(Matrix &X, Matrix &D);
 	void train(Matrix &X, Matrix &D);
 	private:
-	MatrixFuction *activation;
-	MatrixFuction *activationDiv;
+	std::shared_ptr<MatrixFuction> activation;
+	std::shared_ptr<MatrixFuction> activationDiv;
 	Matrix *WIO;//weight Input-Output
 	double learningRate=0.5;
 };

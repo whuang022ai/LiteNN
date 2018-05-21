@@ -29,7 +29,7 @@
 
 using namespace std; 
 
-Perceptron::Perceptron(MatrixFuction *activation,MatrixFuction *activationDiv,int inputDim,double learningRate){
+Perceptron::Perceptron(std::shared_ptr<MatrixFuction> activation,std::shared_ptr<MatrixFuction> activationDiv,int inputDim,double learningRate){
 	
 	this->activation=activation;
 	this->activationDiv=activationDiv;

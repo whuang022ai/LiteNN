@@ -34,14 +34,14 @@ using namespace std;
 class NeuralNetThreeLayer{
 	
 	public :	
-	NeuralNetThreeLayer(MatrixFuction *activation,MatrixFuction *activationDiv,int inputDim,int hiddenDim,int outputDim,double learningRate);
+	NeuralNetThreeLayer(std::shared_ptr<MatrixFuction> activation,std::shared_ptr<MatrixFuction> activationDiv,int inputDim,int hiddenDim,int outputDim,double learningRate);
 	void trainStepSGD(Matrix &X, Matrix &D);
 	void train(Matrix &X, Matrix &D);
     void userTest();
     ~NeuralNetThreeLayer();
 	private:
-	MatrixFuction *activation;
-	MatrixFuction *activationDiv;
+	std::shared_ptr<MatrixFuction> activation;
+	std::shared_ptr<MatrixFuction> activationDiv;
 	Matrix *WIH;//weight Input-Hidden
 	Matrix *WHO;//weight Hidden-Output
 	int inputDim  =0;

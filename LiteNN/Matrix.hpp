@@ -79,7 +79,7 @@ class Matrix {
 	Matrix & operator-=( Matrix const & p) ; //sub 
 	Matrix & operator-=( double const & p) ; //sub 
 	
-	void setMatrixFuction(MatrixFuction  * p);
+	void setMatrixFuction(std::shared_ptr<MatrixFuction>  p);
 	Matrix T (); //trans matrix
 	Matrix F (); //f(x) matrix
 	int rowSize()  const; // get row size
@@ -90,7 +90,8 @@ class Matrix {
 	bool isSymmetricMatrix(); //check if symmetric matrix
 	void argRow();
 	private :
-	MatrixFuction *MF;//dynamic matrix elements mapping function
+	//MatrixFuction MF;//dynamic matrix elements mapping function
+    std::shared_ptr<MatrixFuction> MF;
 	int *rows; //rows = up-down direction size
 	int *cols; //cols = left-right direction size
 	vector<vector<double> > mat; //matrix body

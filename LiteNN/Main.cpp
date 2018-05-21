@@ -32,8 +32,8 @@ void Perceptron_AND_SGD(){
 	TrainDataFactory *f=new TrainDataFactory(); 
 	vector <trainSample> trainList=f->genANDTrainList(); 
 	// setting activation
-	MatrixFuction *activation=new sigmoid();
-	MatrixFuction *activationDiv=new sigmoidDiv();
+    std::shared_ptr<MatrixFuction> activation=std::make_shared<sigmoid>();
+    std::shared_ptr<MatrixFuction> activationDiv=std::make_shared<sigmoidDiv>();
 	// new Perceptron
 	Perceptron *neural=new Perceptron(activation,activationDiv,2,0.7) ;
 	// learning loop
@@ -52,8 +52,8 @@ void Perceptron_OR_SGD(){
 	TrainDataFactory *f=new TrainDataFactory(); 
 	vector <trainSample> trainList=f->genORTrainList(); 
 	// setting activation
-	MatrixFuction *activation=new sigmoid();
-	MatrixFuction *activationDiv=new sigmoidDiv();
+    std::shared_ptr<MatrixFuction> activation=std::make_shared<sigmoid>();
+    std::shared_ptr<MatrixFuction> activationDiv=std::make_shared<sigmoidDiv>();
 	// new Perceptron
 	Perceptron *neural=new Perceptron(activation,activationDiv,2,0.7) ;
 	// learning loop
@@ -71,8 +71,8 @@ void Perceptron_XOR_SGD(){
 	TrainDataFactory *f=new TrainDataFactory(); 
 	vector <trainSample> trainList=f->genXORTrainList(); 
 	// setting activation
-	MatrixFuction *activation=new sigmoid();
-	MatrixFuction *activationDiv=new sigmoidDiv();
+    std::shared_ptr<MatrixFuction> activation=std::make_shared<sigmoid>();
+    std::shared_ptr<MatrixFuction> activationDiv=std::make_shared<sigmoidDiv>();
 	// new Perceptron
 	Perceptron *neural=new Perceptron(activation,activationDiv,2,0.7) ;
 	// learning loop
@@ -90,8 +90,9 @@ void NeuralNetThreeLayer_XOR_SGD(){
 	TrainDataFactory *f=new TrainDataFactory(); 
 	vector <trainSample> trainList=f->genXORTrainList(); 
 	// setting activation
-	MatrixFuction *activation=new sigmoid();
-	MatrixFuction *activationDiv=new sigmoidDiv();
+	//MatrixFuction *activation=new sigmoid();
+    std::shared_ptr<MatrixFuction> activation=std::make_shared<sigmoid>();
+	std::shared_ptr<MatrixFuction> activationDiv=std::make_shared<sigmoidDiv>();
 	// new NeuralNetThreeLayer
 	NeuralNetThreeLayer *neural=new NeuralNetThreeLayer(activation,activationDiv,2,2,1,0.3) ;
 	// learning loop

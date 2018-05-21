@@ -466,7 +466,7 @@ void MatrixUnitTest::testMatrixF(){
 	Matrix *testAa =new Matrix(3,2,2.4);
 	Matrix *testA =new Matrix(3,2,2.4);
 	Matrix *testB =new Matrix(3,2,24);
-	MatrixFuction *f=new myMatrixFuctionUnitTest();
+    std::shared_ptr<MatrixFuction> f=std::make_shared<myMatrixFuctionUnitTest>();
 	(*testA).setMatrixFuction(f);
 	Matrix  testC =(*testA).F();
 	assert((testC==*testB));

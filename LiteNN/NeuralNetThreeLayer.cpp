@@ -29,7 +29,7 @@
 
 using namespace std; 
 
-NeuralNetThreeLayer::NeuralNetThreeLayer(MatrixFuction *activation,MatrixFuction *activationDiv,int inputDim,int hiddenDim,int outputDim,double learningRate){
+NeuralNetThreeLayer::NeuralNetThreeLayer(std::shared_ptr<MatrixFuction>  activation,std::shared_ptr<MatrixFuction> activationDiv,int inputDim,int hiddenDim,int outputDim,double learningRate){
 	this->inputDim  =inputDim;
 	this->hiddenDim =hiddenDim;
 	this->outputDim =outputDim;
@@ -42,8 +42,7 @@ NeuralNetThreeLayer::NeuralNetThreeLayer(MatrixFuction *activation,MatrixFuction
 NeuralNetThreeLayer::~NeuralNetThreeLayer(){
     delete WIH;
     delete WHO;
-    delete activation;
-    delete activationDiv;
+
 }
 void NeuralNetThreeLayer::userTest(){
     while(true){
