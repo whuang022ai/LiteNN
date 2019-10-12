@@ -465,7 +465,7 @@ Matrix operator >> (const Matrix& a, const Matrix& b) {
 	}
 }
 
-Matrix operator << (const Matrix& a, const Matrix& b) { 
+Matrix operator << (const Matrix& a, const Matrix& b) { // never used
 	if(a.colSize()==1&&b.rowSize()==1){
 		Matrix dot(a.rowSize(),b.colSize());
 		for(int i=0;i<a.rowSize();i++){

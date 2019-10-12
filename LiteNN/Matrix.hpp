@@ -112,7 +112,7 @@ Matrix operator-(double num, const Matrix& a);
 Matrix operator-(const Matrix& a,double num);
 
 Matrix operator >> (const Matrix& a, const Matrix& b); //hadamard product
-Matrix operator << (const Matrix& a, const Matrix& b); //table product
+Matrix operator << (const Matrix& a, const Matrix& b); //table product // never used
 bool operator == (const Matrix& a, const Matrix& b); //almost equal of matrix
 
 #endif // HELLO_H_
