@@ -53,7 +53,7 @@ void Perceptron::trainStepSGD(Matrix &X,Matrix &D){
 	//BackWard Path
 	Matrix dNetO=NetO.F();//get the dNetO
 	Matrix E=D-NetO;//get error
-	Matrix dWIO=-1*E*dNetO<<X.T();//get weight gradient = Output Layer gradient (Table Product) Input Layer Trans
+	Matrix dWIO=-1*E*dNetO*X.T();//get weight gradient = Output Layer gradient (Matrix Product) Input Layer Trans
 	*WIO-=learningRate*dWIO;//update weight with the opposite of the gradient vector
 	E.print();
 }

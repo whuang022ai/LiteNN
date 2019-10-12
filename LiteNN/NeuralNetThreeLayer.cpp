@@ -106,9 +106,9 @@ void NeuralNetThreeLayer::trainStepSGD(Matrix &X,Matrix &D){
 	Matrix E=D-NetO;//get error
 	Matrix dO=-1*E>>dNetO;//get Output Layer gradient = -1 * Output active div (Hadamard Product) Error
 	//
-    Matrix dWHO=dO<<NetH.T();// get WeightHO gradient = Output Layer gradient (Table Product) Hidden Layer Trans
+    Matrix dWHO=dO*NetH.T();// get WeightHO gradient = Output Layer gradient ( Matrix Product) Hidden Layer Trans
     Matrix dH=dNetH>>(WHO->T()*dO);//get Hidden Layer gradient = Hidden active div (Hadamard Product) { WeightHO trans dot Output Layer gradient}
-    Matrix dWIH=dH<<X.T();//get WeightIH gradient = Hidden Layer gradient  (Table Product) Input Layer Trans
+    Matrix dWIH=dH*X.T();//get WeightIH gradient = Hidden Layer gradient  ( Matrix Product) Input Layer Trans
 	
 	*WHO-=learningRate*dWHO;//update weight with the opposite of the gradient vector
 	*WIH-=learningRate*dWIH;//update weight with the opposite of the gradient vector
