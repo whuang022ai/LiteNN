@@ -1,5 +1,7 @@
 #include <iostream>
 #include <cmath>
+#include <algorithm>
+#include <random>
 #include "Matrix.hpp"
 #include "MatrixUnitTest.hpp"
 #include "Perceptron.hpp"
@@ -38,6 +40,7 @@ void Perceptron_AND_SGD(){
 	Perceptron *neural=new Perceptron(activation,activationDiv,2,0.7) ;
 	// learning loop
 	for(int i=0;i<1000;i++){
+		std::random_shuffle(trainList.begin(),trainList.end());
 		for(int j=0; j<trainList.size(); j++){
 			neural->trainStepSGD(*trainList[j].X,*trainList[j].Y);
 		}
@@ -58,6 +61,7 @@ void Perceptron_OR_SGD(){
 	Perceptron *neural=new Perceptron(activation,activationDiv,2,0.7) ;
 	// learning loop
 	for(int i=0;i<1000;i++){
+		std::random_shuffle(trainList.begin(),trainList.end());
 		for(int j=0; j<trainList.size(); j++){
 			neural->trainStepSGD(*trainList[j].X,*trainList[j].Y);
 		}
@@ -77,6 +81,7 @@ void Perceptron_XOR_SGD(){
 	Perceptron *neural=new Perceptron(activation,activationDiv,2,0.7) ;
 	// learning loop
 	for(int i=0;i<1000;i++){
+		std::random_shuffle(trainList.begin(),trainList.end());
 		for(int j=0; j<trainList.size(); j++){
 			neural->trainStepSGD(*trainList[j].X,*trainList[j].Y);
 		}
@@ -97,6 +102,7 @@ void NeuralNetThreeLayer_XOR_SGD(){
 	NeuralNetThreeLayer *neural=new NeuralNetThreeLayer(activation,activationDiv,2,2,1,0.3) ;
 	// learning loop
 	for(int i=0;i<5000;i++){
+		std::random_shuffle(trainList.begin(),trainList.end());
 		for(int j=0; j<trainList.size(); j++){
 			neural->trainStepSGD(*trainList[j].X,*trainList[j].Y);
 		}
@@ -120,6 +126,6 @@ void unitTest(){
 
 int main(int argc, char *argv[]){
     //unitTest();
-	//Perceptron_XOR_SGD();
+	//Perceptron_OR_SGD();
     NeuralNetThreeLayer_XOR_SGD();
 }
